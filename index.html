@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Landing Page</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  background: url('https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1600&q=80') center center / cover no-repeat;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+}
+
+/* Overlay كامل يتحرك */
+.overlay {
+  background: rgba(0, 0, 0, 0.5);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  animation: floatOverlay 3s ease-in-out infinite alternate;
+}
+
+@keyframes floatOverlay {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0); }
+}
+
+/* Navbar */
+.navbar {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* اللوجو في Navbar: دائري يمثل علم فلسطين بالكامل */
+.logo-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: conic-gradient(
+    black 0 25%, 
+    white 25% 50%, 
+    green 50% 75%, 
+    red 75% 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.6);
+}
+
+/* Hero Section */
+.hero {
+  flex: 1;
+  display: flex;
+  flex-direction: row; 
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  padding: 3rem;
+}
+
+/* Side Line + Circle */
+.side-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.side-line {
+  width: 6px;
+  background: linear-gradient(to bottom, #6a11cb, #2575fc);
+  border-radius: 5px;
+  animation: grow 2s ease-in-out infinite alternate;
+}
+
+.side-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: conic-gradient(red 0 90deg, white 90deg 180deg, black 180deg 270deg, green 270deg 360deg);
+  border: 2px solid white;
+  box-shadow: 0 0 15px rgba(255,255,255,0.6);
+  transition: transform 0.5s;
+}
+
+.side-circle:hover {
+  transform: rotateY(360deg) scale(1.1);
+}
+
+@keyframes grow {
+  0% {height: 50px;}
+  100% {height: 150px;}
+}
+
+.hero-text {
+  max-width: 500px;
+  background: rgba(0,0,0,0.35);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  text-align: left;
+  color: white;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+}
+
+p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  border: none;
+  font-weight: 600;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.05);
+  opacity: 0.9;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* Mockups */
+.mockups {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: nowrap; 
+  perspective: 1000px;
+}
+
+.mockups img {
+  max-width: 230px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  transition: transform 0.5s, box-shadow 0.5s;
+}
+
+.mockups img:hover {
+  transform: translateY(-10px) rotateY(15deg);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+}
+
+/* Footer */
+footer {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* زر واتساب ثابت أسفل يمين */
+.floating-whatsapp {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: #25D366;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3), 0 0 10px rgba(37,211,102,0.5);
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.floating-whatsapp:hover {
+  background: #1ebd5a;
+  transform: scale(1.15) rotate(-5deg);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4), 0 0 15px rgba(37,211,102,0.7);
+}
+
+.floating-whatsapp img {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+</style>
+</head>
+<body>
+<div class="overlay">
+  <!-- Navbar -->
+  <nav class="navbar navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <div class="logo-icon"></div> 
+        Anas Solutions
+      </a>
+      <div>
+        <a class="text-white me-3" href="#">Home</a>
+        <a class="text-white me-3" href="#">Services</a>
+        <a class="text-white" href="#">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <div class="side-container" data-aos="fade-right">
+      <div class="side-circle"></div>
+      <div class="side-line"></div>
+    </div>
+
+    <div class="hero-text" data-aos="fade-up">
+      <h1>Grow Your Business</h1>
+      <p>
+        Professional solutions to boost your online presence, build a stunning landing page, 
+        and engage your customers effectively. Let's turn visitors into loyal clients.
+      </p>
+      <a href="#" class="btn btn-primary btn-lg">Get Started</a>
+
+      <div class="mockups mt-4">
+        <img src="images/pexels-photo-1181271.jpeg" alt="Laptop Mockup">
+        <img src="images/pexels-photo-106344.webp" alt="Mobile Mockup">
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>Built with ❤️ by Anas Baker</p>
+  </footer>
+</div>
+
+<!-- زر واتساب ثابت -->
+<a href="https://wa.me/201040321587" target="_blank" class="floating-whatsapp">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+</a>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+</body>
+</html>
